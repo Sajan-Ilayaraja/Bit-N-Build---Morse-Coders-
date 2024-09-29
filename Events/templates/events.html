@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .event-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .sidebar-logo {
+      width: 150px;
+      margin-bottom: 20px;
+    } 
+
+    .event-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .event-card img {
+      max-width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .event-details {
+      padding: 15px;
+    }
+
+    .event-details h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .event-details p {
+      margin-bottom: 5px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .event-date {
+      display: flex;
+      align-items: center;
+      color: #999;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .event-date img {
+      margin-right: 8px;
+      width: 16px;
+      height: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .event-card {
+        margin-bottom: 20px;
+      }
+    }
+
+    .logo {
+      height: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <a href="{{ url_for('after_login_page') }}">
+      <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="Logo" class="logo">
+    </a>
+    <h1>Upcoming Events</h1>
+
+    <div class="events-grid">
+
+      <div class="event-card" onclick="location.href='event-details?id=1'">
+        <img src="{{ url_for('static', filename='img/event10.png') }}" alt="2024 BUSINESS Webinar">
+        <div class="event-details">
+            <h2>2024 BUSINESS Webinar</h2>
+            <p>Madura, Tamil Nadu, India</p>
+            <div class="event-date">
+                <img src="{{ url_for('static', filename='img/loc_icon.png') }}" alt="Date">
+                <span>Mar 23, 2024</span>
+            </div>
+        </div>
+    </div>
+
+      <div class="event-card" onclick="location.href='event-details.html?id=2'">
+        <img src="{{ url_for('static', filename='img/event11.png') }}" alt="EOSC Symposium">
+        <div class="event-details">
+          <h2>EOSC Symposium 2024</h2>
+          <p>Coimbatore, Tamil Nadu, India</p>
+          <div class="event-date">
+            <img src="{{ url_for('static', filename='img/loc_icon.png') }}" alt="Date">
+            <span>Nov 20, 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card" onclick="location.href='event-details.html?id=3'">
+        <img src="{{ url_for('static', filename='img/event12.png') }}" alt="Hackathon">
+        <div class="event-details">
+          <h2>Hackathon</h2>
+          <p>Delhi, India</p>
+          <div class="event-date">
+            <img src="{{ url_for('static', filename='img/loc_icon.png') }}" alt="Date">
+            <span>Sept 27, 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card" onclick="location.href='event-details.html?id=4'">
+        <img src="{{ url_for('static', filename='img/event13.png') }}" alt="YUVAN Cultural Events">
+        <div class="event-details">
+          <h2>YUVAN Cultural Events</h2>
+          <p>Hyderabad, Telangana, India</p>
+          <div class="event-date">
+            <img src="{{ url_for('static', filename='img/loc_icon.png') }}" alt="Date">
+            <span>June 26, 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card" onclick="location.href='event-details.html?id=5'">
+        <img src="{{ url_for('static', filename='img/event14.png') }}" alt="CPH Research Day">
+        <div class="event-details">
+          <h2>CPH Research Day</h2>
+          <p>Bangalore, Karnataka, India</p>
+          <div class="event-date">
+            <img src="{{ url_for('static', filename='img/loc_icon.png') }}" alt="Date">
+            <span>Apr 10, 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card" onclick="location.href='event-details.html?id=6'">
+        <img src="{{ url_for('static', filename='img/event15.png') }}" alt="Workshop">
+        <div class="event-details">
+          <h2>Workshop</h2>
+          <p>Chennai, Tamil Nadu, India</p>
+          <div class="event-date">
+            <img src="{{ url_for('static', filename='img/loc_icon.png') }}" alt="Date">
+            <span>May 25, 2024</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

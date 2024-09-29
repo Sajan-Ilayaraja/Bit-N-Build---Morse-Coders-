@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 20%;
+    background-color: #fff;
+    padding: 20px;
+    border-right: 1px solid #eaeaea;
+}
+
+.sidebar-logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.sidebar .logo h2 {
+    color: #00C853;
+    font-size: 1.75em;
+    text-align: left;
+}
+
+.sidebar .logo p {
+    font-size: 0.9em;
+    color: #333;
+    margin-top: -10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 40px;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
+}
+
+.sidebar ul li a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #00C853;
+    color: white;
+}
+
+/* Main Content */
+.main-content {
+    width: 80%;
+    padding: 20px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.user-profile .profile-picture img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+.user-profile .user-info {
+    margin-left: 20px;
+}
+
+.user-profile .user-info h4 {
+    margin-bottom: 5px;
+}
+
+/* Application History Section */
+.application-history h4 {
+    margin-bottom: 20px;
+}
+
+.events {
+    display: flex;
+    gap: 20px;
+}
+
+.event-card {
+    background-color: white;
+    border: 1px solid #eaeaea;
+    border-radius: 15px;
+    padding: 15px;
+    width: 300px;
+    transition: box-shadow 0.3s;
+}
+
+.event-card:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.event-card img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.event-details h6 {
+    margin-top: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.event-details p {
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.event-footer {
+    display: flex;
+    align-items: center;
+}
+
+.event-footer .date-icon {
+    background-color: #f5f5f5;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.fas.fa-map-marker-alt, .fas.fa-calendar-alt {
+    margin-right: 5px;
+}

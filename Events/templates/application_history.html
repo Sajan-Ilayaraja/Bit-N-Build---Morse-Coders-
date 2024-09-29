@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application History</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='ahstyles.css')}}">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <a href="{{ url_for('after_login_page') }}">
+                    <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="Tectra Logo" class="sidebar-logo">
+                </a>
+            </div>
+            <ul class="menu">
+                <li><a href="profile.html">Dashboard</a></li>
+                <li><a href="current_applications.html">Current applications</a></li>
+                <li><a href="application_history.html" class="active">Application history</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="your_event.html">Your events</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- User Profile Section -->
+            <div class="user-profile">
+                <div class="profile-picture">
+                    <img src="profile-photo.jpg" alt="User Profile">
+                </div>
+                <div class="user-info">
+                    <h4>Alaa Mohamed</h4>
+                    <p>Product Design</p>
+                    <p>Eastern European Time (EET), Cairo UTC +3</p>
+                </div>
+            </div>
+
+            <!-- Application History Section -->
+            <div class="application-history">
+                <h4>Application History</h4>
+                <div class="events">
+                    <!-- Event 1 -->
+                    <div class="event-card">
+                        <img src="event5.webp" alt="Event Image">
+                        <div class="event-details">
+                            <h6>Fctasy 2024</h6>
+                            <p><i class="fas fa-map-marker-alt"></i> Bangalore, Karnataka, India.</p>
+                            <div class="event-footer">
+                                <span class="date-icon"><i class="fas fa-calendar-alt"></i> Jan 25, 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Event 2 -->
+                    <div class="event-card">
+                        <img src="event6.jpg" alt="Event Image">
+                        <div class="event-details">
+                            <h6>Bit Bay</h6>
+                            <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu, India.</p>
+                            <div class="event-footer">
+                                <span class="date-icon"><i class="fas fa-calendar-alt"></i> Feb 20, 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

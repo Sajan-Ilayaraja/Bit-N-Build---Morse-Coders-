@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Events</title>
+    <link rel="stylesheet" href="yestyles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <a href="index.html">
+                <img src="logo.jpg" alt="Tectra Logo" class="sidebar-logo">
+            </a>
+
+            </div>
+            <ul class="menu">
+                <li><a href="profile.html">Dashboard</a></li>
+                <li><a href="current_applications.html">Current applications</a></li>
+                <li><a href="application_history.html">Application history</a></li>
+                <li><a href="settings.html" >Settings</a></li>
+                <li><a href="your_event.html">Your events</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- User Profile Section -->
+            <div class="user-profile">
+                <div class="profile-picture">
+                    <img src="profile-photo.jpg" alt="User Profile">
+                </div>
+                <div class="user-info">
+                    <h4>Alaa Mohamed</h4>
+                    <p>Product Design</p>
+                    <p>Eastern European Time (EET), Cairo UTC +3</p>
+                </div>
+            </div>
+
+            <!-- Your Events Section -->
+            <div class="event-card" onclick="window.location.href='/your_event_details/{{ event.id }}'">
+                <img src="{{ event.image_url }}" alt="Event Image">
+                <div class="event-details">
+                    <h6>{{ event.name }}</h6>
+                    <p><i class="fas fa-map-marker-alt"></i> {{ event.location }}</p>
+                    <div class="event-footer">
+                        <span class="date-icon"><i class="fas fa-calendar-alt"></i> {{ event.date }}</span>
+                    </div>
+                </div>
+            </div>
+                    <!-- Event 2 -->
+                    <div class="event-card" onclick="window.location.href='your_event_details.html'">
+                        <img src="event6.jpg" alt="Event Image">
+                        <div class="event-details">
+                            <h6>Bit Bay</h6>
+                            <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu, India.</p>
+                            <div class="event-footer">
+                                <span class="date-icon"><i class="fas fa-calendar-alt"></i> Feb 20, 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

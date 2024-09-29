@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+  }
+
+  .sidebar-logo {
+    width: 150px;
+    margin-bottom: 20px;
+} 
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-right input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+  }
+
+  .location-btn {
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin-right: 10px; /* Add spacing between Location and Explore all */
+    border-radius: 8px;
+    cursor: pointer;
+}
+  
+  .location-btn, .create-event-btn, .login-btn, .signup-btn {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .location-btn {
+    background-color: #FF9800;
+  }
+  
+  .create-event-btn {
+    background-color: #4CAF50;
+  }
+  
+  .login-btn {
+    background-color: #2196F3;
+  }
+  
+  .signup-btn {
+    background-color: #6C63FF;
+  }
+  
+  .main-content {
+    padding: 40px;
+  }
+  
+  .banner {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .banner h1 {
+    font-size: 36px;
+    color: #333;
+  }
+  
+  .browse-categories {
+    margin-bottom: 40px;
+  }
+  
+  .browse-categories h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .categories button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+  .event-card a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .event-card:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+  }
+  
+  .popular-events h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .events-grid {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .event-card {
+    width: 22%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .event-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .event-info h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .event-info p {
+    color: #777;
+    margin-bottom: 5px;
+  }
+  
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footer-logo {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .footer-links a, .footer-social a {
+    color: white;
+    margin-right: 10px;
+    text-decoration: none;
+  }
+  
+  .footer-links a:hover, .footer-social a:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .events-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .event-card {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  
+/* Base button styling */
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-orange {
+  background-color: #ff9800;  /* Orange background */
+}
+
+.btn-orange:hover {
+  background-color: #e68900;  /* Darker orange on hover */
+}
+
+.btn-purple {
+  background-color: #7c4dff;  /* Purple background */
+}
+
+.btn-purple:hover {
+  background-color: #5e35b1;  /* Darker purple on hover */
+}
+
+.btn-green {
+  background-color: #28a745;  /* Green background for Create Event */
+}
+
+.btn-green:hover {
+  background-color: #218838;  /* Darker green on hover */
+}
+
+/* Additional styling for input and button alignment */
+.header-right input[type="text"] {
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Add margin between buttons */
+.header-right .btn {
+  margin-right: 10px; /* This creates the gap between buttons */
+}
+
+
+.create_event-btn {
+  margin-left: 10px;  /* Creates the space between Explore and Create Event */
+}
+.create_event-btn-container {
+  display: inline-block;
+}
+
+.btn {
+  text-decoration: none; /* Remove underline */
+  color: white; /* Ensure the text color stays consistent */
+}
+
+.btn:hover {
+  text-decoration: none; /* Ensure no underline on hover */
+}
+
+.banner img {
+  width: 100%;      /* Stretches the image to the full width of the page */
+  height: auto;     /* Maintains the aspect ratio of the image */
+  display: block;   /* Ensures no extra space below the image */
+}

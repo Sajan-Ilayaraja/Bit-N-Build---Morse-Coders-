@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pstyles.css') }}">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <a href="{{ url_for('after_login_page') }}">
+            <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="Tectra Logo" class="sidebar-logo">
+        </a>
+        <ul>
+            <li><a href="{{ url_for('profile') }}">Profile</a></li>
+            <li><a href="{{ url_for('current_app_page') }}">Current Applications</a></li>
+            <li><a href="{{ url_for('application_history_page') }}">Application History</a></li>
+            <li><a href="{{ url_for('settings_page') }}">Settings</a></li>
+            <li><a href="{{ url_for('your_event_page') }}">Your Events</a></li>
+        </ul>
+    </div>
+
+    <!-- Profile Section -->
+<div class="profile-container">
+    <h2>User Profile</h2>
+    <div class="profile-header">
+        <img src="{{ url_for('static', filename='img/profile-photo.jpg') }}" id="profilePhoto" alt="Profile" class="profile-photo">
+        <div class="profile-info">
+            <h3 id="userName">{{ user['name'] }}</h3>  <!-- Displaying user's name -->
+            <p>Email: {{ user['email'] }}</p>  <!-- Displaying user's email -->
+        </div>
+
+    </div>
+
+
+        <!-- Personal Details Form -->
+        <form class="personal-details" method="POST" action="{{ url_for('update_profile') }}">
+            <h3>Personal Details</h3>
+            <label for="userName">User Name</label>
+            <input type="text" id="userNameInput" name="username" placeholder="eg. Alaa" value="{{ user[0] }}" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="******" required>
+
+            <label for="mailId">Mail ID</label>
+            
+            <input type="email" id="mailId" name="email" placeholder="eg. Alaa123@gmail.com" value="{{ user[1] }}" required>
+
+            <div class="form-actions">
+                <button type="button" onclick="discardChanges()">Discard Changes</button>
+                <button type="submit">Update Profile</button>
+            </div>
+        </form>
+    </div>
+
+    <input type="file" id="fileUpload" style="display:none;" accept="image/*" onchange="previewPhoto(event)">
+
+    <script src="pscript.js"></script>
+</body>
+</html>

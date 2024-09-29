@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Event Details</title>
+    <link rel="stylesheet" href="yedstyles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <a href="index.html">
+                <img src="logo.jpg" alt="Tectra Logo" class="sidebar-logo">
+            </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Event Details Section -->
+            <div class="event-details">
+                <h2>Fctasy 2024</h2>
+                <p><strong>Date:</strong> January 25, 2024</p>
+                <p><strong>Venue:</strong> Bangalore, Karnataka, India</p>
+                <p><strong>Number of Students Applied:</strong> 150</p>
+                <p><strong>Number of Students Attended:</strong> 120</p>
+            </div>
+
+            <h4>Mark Attendance</h4>
+<form action="/check_attendance/{{ event.id }}" method="POST" enctype="multipart/form-data">
+    <label for="attendance_image">Upload Attendee Image:</label>
+    <input type="file" name="attendance_image" required>
+    <button type="submit">Check Attendance</button>
+</form>
+
+
+            <!-- Students Table Section -->
+            <div class="table-container">
+                <h3>Student Attendance</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Phone Number</th>
+                            <th>College Name</th>
+                            <th>Attendance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>1234567890</td>
+                            <td>ABC College</td>
+                            <td>Present</td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>0987654321</td>
+                            <td>XYZ University</td>
+                            <td>Absent</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='crstyles.css')}}">
+</head>
+<body>
+
+    <!-- Header with Profile Link -->
+    <header>
+        <div class="header-container">
+            <a href="{{ url_for('after_login_page') }}">
+                <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="Logo" class="logo">
+            </a>
+            <nav>
+                <img src="{{ url_for('static', filename='img/profile-photo.jpg') }}" alt="Profile" class="profile" onclick="navigateToProfile()">
+            </nav>
+        </div>
+    </header>
+
+    <!-- First Page Form -->
+    <section id="page1">
+        <h2>Reimagine the Future of Events</h2>
+        <p>Elevate your event with our all-in-one platform...</p>
+
+        <form id="eventForm" action="{{ url_for('create_event') }}" method="POST">
+            <div class="step">
+                <h3>1. Organization Detail</h3>
+                <select id="category" name="category" required>
+                    <option value="" disabled selected>Choose Category</option>
+                    <option value="Symposium">Symposium</option>
+                    <option value="Hackathon">Hackathon</option>
+                    <option value="Workshop">Workshop</option>
+                    <option value="Webinar">Webinar</option>
+                </select>
+                <input type="text" id="eventName" name="eventName" placeholder="Event Name" required>
+                <input type="datetime-local" id="dateTime" name="dateTime" required>
+                <input type="text" id="venue" name="venue" placeholder="Venue" required>
+                <input type="number" id="noOfDays" name="noOfDays" placeholder="No. Of Days" required>
+                <input type="number" id="maxParticipants" name="maxParticipants" placeholder="Max Participants" required>
+                <input type="text" id="registrationFee" name="registrationFee" placeholder="Registration Fee" required>
+                <label>Accommodation Provided?</label>
+                <input type="radio" id="yes" name="accommodation" value="yes" required> Yes
+                <input type="radio" id="no" name="accommodation" value="no"> No
+            </div>
+            <button type="submit">Continue</button>
+        </form>
+        
+    </section>
+
+    <script>
+        document.getElementById('eventForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+    
+            // Make an AJAX request to submit the form data
+            let formData = new FormData(this);
+    
+            fetch('{{ url_for('create_event') }}', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json()) // Parse response as JSON
+            .then(data => {
+                if (data.success) {
+                    // Navigate to the second page if the event creation is successful
+                    document.getElementById('page1').style.display = 'none';
+                    document.getElementById('page2').style.display = 'block';
+                } else {
+                    alert(data.message || "There was an error submitting the form.");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            });
+        });
+    </script>
+    
+
+
+    
+    <!-- Second Page Form -->
+    <section id="page2" style="display: none;">
+        <form id="uploadDocumentsForm" enctype="multipart/form-data">
+            <div class="step">
+                <h3>1. Upload Event Brouser</h3>
+                <input type="file" id="uploadbrouser" name="uploadbrouser" accept=".pdf,.jpg,.jpeg,.png" required>
+            </div>
+            <div class="step">
+                <h3>2. Upload PAN</h3>
+                <input type="file" id="uploadPAN" name="uploadPAN" accept=".pdf,.jpg,.jpeg,.png" required>
+            </div>
+            <div class="step">
+                <h3>3. Upload Aadhar Card</h3>
+                <input type="file" id="uploadAadhar" name="uploadAadhar" accept=".pdf,.jpg,.jpeg,.png" required>
+            </div>
+    
+            <button type="button" onclick="submitDocuments()">Submit</button>
+        </form>
+    </section>
+    
+    <!-- Third Page Form -->
+    <section id="page3" style="display: none;">
+        <form id="agreementForm">
+            <div class="step">
+                <h3>Event Publishing Agreement</h3>
+    
+                <label for="organizationName">Between (Organization Name):</label>
+                <input type="text" id="organizationName" name="organizationName" placeholder="Organization Name" required>
+    
+                <label for="organizerEmail">Event Organizer (Email Address):</label>
+                <input type="email" id="organizerEmail" name="organizerEmail" placeholder="Email Address" required>
+    
+                <label for="organizerSignature">Organizer Signature:</label>
+                <input type="text" id="organizerSignature" name="organizerSignature" placeholder="Organizer Signature" required>
+    
+                <label for="organizerDate">Date:</label>
+                <input type="date" id="organizerDate" name="organizerDate" required>
+    
+                <p>Platform Signature: [Automatically filled by Platform]</p>
+                <label for="platformDate">Date:</label>
+                <input type="date" id="platformDate" disabled>
+    
+                <button type="button" onclick="submitAgreement()">Confirm</button>
+            </div>
+    
+            <!-- Confirmation Modal -->
+            <div id="confirmationModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <p>Event created! Check your email for confirmation.</p>
+                    <button id="closeModal" onclick="closeModal()">OK</button>
+                </div>
+            </div>
+        </form>
+    </section>
+    
+    <!-- JavaScript for Page Navigation and Submissions -->
+    <script>
+        // Navigate from Page 1 to Page 2
+
+        function navigateToProfile() {
+    window.location.href = "{{ url_for('profile') }}"; // Make sure this points to the right route
+}
+
+        function goToPage2() {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'block';
+        }
+    
+        // Navigate to Page 3 after successful document upload
+        function goToPage3() {
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('page3').style.display = 'block';
+        }
+    
+        // Submit the documents from Page 2
+        function submitDocuments() {
+            const formData = new FormData(document.getElementById('uploadDocumentsForm'));
+    
+            fetch('/upload_documents', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // If upload is successful, go to Page 3
+                    goToPage3();
+                } else {
+                    alert('Document upload failed. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while uploading documents.');
+            });
+        }
+    
+        // Submit the agreement form from Page 3
+        function submitAgreement() {
+    const organizationName = document.getElementById('organizationName').value;
+    const organizerEmail = document.getElementById('organizerEmail').value;
+    const organizerSignature = document.getElementById('organizerSignature').value;
+    const organizerDate = document.getElementById('organizerDate').value;
+
+    // Create the data object
+    const data = {
+        organizationName,
+        organizerEmail,
+        organizerSignature,
+        organizerDate
+    };
+
+    // Send the POST request to the server
+    fetch('/submit_agreement', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Show confirmation modal
+            document.getElementById('confirmationModal').style.display = 'block';
+        } else {
+            alert(data.message); // Handle error messages
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while submitting the agreement.');
+    });
+}
+
+function closeModal() {
+    document.getElementById('confirmationModal').style.display = 'none';
+}
+    </script>
+ 
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Tectra</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+</head>
+<body>
+  <header>
+    <a href="{{ url_for('after_login_page') }}">
+      <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="Tectra Logo" class="sidebar-logo">
+  </a>
+
+  <div class="header-right">
+    <input type="text" placeholder="Search Events">
+    <button class="btn btn-orange">Location</button>
+    <a href="{{ url_for('events_page') }}" class="btn btn-purple">Explore all</a>
+    <div class="create_event-btn-container">
+      <form action="{{ url_for('create_event') }}" method="GET">
+        <button type="submit" class="btn btn-green">Create Event</button>
+      </form>
+    </div>
+    <img src="{{ url_for('static', filename='img/profile-photo.jpg') }}" alt="Profile" class="profile" onclick="navigateToProfile()">
+  </div>
+  
+     
+
+  </header>
+
+  <section class="main-content">
+    <div class="banner">
+      <img src="{{url_for('static', filename='img/logophoto.png')}}" alt="">
+    </div>
+
+    <section class="browse-categories">
+      <h2>Browse by Category</h2>
+      <div class="categories">
+        <button>Competitions</button>
+        <button>Hackathons</button>
+        <button>Assessments</button>
+        <button>Scholarships</button>
+        <button>Workshops</button>
+        <button>Conferences</button>
+        <button>Cultural Events</button>
+
+      </div>
+    </section>
+
+    <section class="popular-events">
+        <h2>Popular Events</h2>
+        <div class="events-grid">
+          
+          <!-- Event 1 -->
+          <div class="event-card">
+            <!-- Wrap the image and event info in an anchor tag -->
+            <a href="event-details.html"> <!-- Replace with actual event details page -->
+              <img src="{{url_for('static', filename='img/event1.png')}}" alt="2024 Business Conference">
+              <div class="event-info">
+                <h3>2024 Business Conference</h3>
+                <p>Bangalore, Karnataka, India</p>
+                <p>May 25, 2024</p>
+              </div>
+            </a>
+          </div>
+      
+          <!-- Event 2 -->
+          <div class="event-card">
+            <a href="event-details.html"> <!-- Replace with actual event details page -->
+              <img src="{{url_for('static', filename='img/event2.png')}}" alt="Digital Marketing Meet Up">
+              <div class="event-info">
+                <h3>Digital Marketing Meet Up</h3>
+                <p>Chennai, Tamil Nadu, India</p>
+                <p>Jan 20, 2024</p>
+              </div>
+            </a>
+          </div>
+      
+          <!-- Event 3 -->
+          <div class="event-card">
+            <a href="event-details.html"> <!-- Replace with actual event details page -->
+              <img src="{{url_for('static', filename='img/event3.png')}}" alt="Rafat Ali Event">
+              <div class="event-info">
+                <h3>Rafat Ali Event</h3>
+                <p>Delhi, India</p>
+                <p>Sept 30, 2024</p>
+              </div>
+            </a>
+          </div>
+      
+          <!-- Event 4 -->
+          <div class="event-card">
+            <a href="event-details.html"> <!-- Replace with actual event details page -->
+              <img src="{{url_for('static', filename='img/event4.png')}}" alt="Job Fair">
+              <div class="event-info">
+                <h3>Job Fair</h3>
+                <p>Hyderabad, Telangana</p>
+                <p>Aug 14, 2024</p>
+              </div>
+            </a>
+          </div>
+          
+        </div>
+      </section>
+    </section>  
+
+  <footer>
+    <div class="footer-content">
+        <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+        <a href="#">Help Center</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/">Facebook</a>
+        <a href="https://x.com/">Twitter</a>
+        <a href="https://www.instagram.com/">Instagram</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
+ <!-- JavaScript for Page Navigation and Submissions -->
+ <script>
+  // Navigate from Page 1 to Page 2
+
+  function navigateToProfile() {
+window.location.href = "{{ url_for('profile') }}"; // Make sure this points to the right route
+}
+ </script>
+
+<style>
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-right input {
+    margin-right: 10px;
+  }
+
+  .btn {
+    margin-right: 10px;
+  }
+
+  .profile {
+    width: 40px;      /* Adjust to preferred size */
+    height: 40px;     /* Keep height proportional to width */
+    border-radius: 50%; /* Circular profile image */
+    margin-left: 15px; /* Space between the "Create Event" button and profile */
+    cursor: pointer;
+  }
+
+  /* Optional: Responsive design */
+  @media (max-width: 768px) {
+    .header-right {
+      flex-wrap: wrap;
+    }
+
+    .profile {
+      margin-top: 10px;
+    }
+  }
+</style>

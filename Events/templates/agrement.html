@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Publishing Agreement</title>
+    <link rel="stylesheet" href="agstyles.css">
+</head>
+<body>
+
+    <div class="container">
+        <form id="agreementForm">
+            <h2>Event Publishing Agreement</h2>
+
+            <div class="form-group">
+                <label for="organizationName">Between (Organization Name):</label>
+                <input type="text" id="organizationName" placeholder="Organization Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="organizerEmail">Event Organizer (Email Address):</label>
+                <input type="email" id="organizerEmail" placeholder="Email Address" required>
+            </div>
+
+            <p>and</p>
+            <p><b>Event Management Platform:</b> [Platform Name]</p>
+            <p><b>Email Address:</b> [Email Address]</p>
+
+            <ol class="agreement-terms">
+                <li><b>Event Submission:</b> The Organizer submits an event for publication on the Platform, ensuring all details are accurate and comply with applicable laws.</li>
+                <li><b>Publication Rights:</b> The Organizer grants the Platform the right to publish Event information, including descriptions and images.</li>
+                <li><b>Compliance:</b> The Organizer is responsible for obtaining any necessary permits and ensuring the Event complies with local laws.</li>
+                <li><b>Indemnification:</b> The Organizer agrees to indemnify the Platform against any claims arising from the Event.</li>
+                <li><b>Cancellation Policy:</b> The Organizer must notify the Platform of any cancellations or changes promptly.</li>
+                <li><b>Termination:</b> Either party may terminate this Agreement with written notice. The Platform will remove the Event listing upon termination.</li>
+                <li><b>Acceptance:</b> By submitting the Event, the Organizer agrees to these terms.</li>
+            </ol>
+
+            <div class="form-group">
+                <label for="organizerSignature">Organizer Signature:</label>
+                <input type="text" id="organizerSignature" placeholder="Organizer Signature" required>
+            </div>
+
+            <div class="form-group">
+                <label for="organizerDate">Date:</label>
+                <input type="date" id="organizerDate" required>
+            </div>
+
+            <p><b>Platform Signature:</b> [Automatically filled by Platform]</p>
+
+            <div class="form-group">
+                <label for="platformDate">Date:</label>
+                <input type="date" id="platformDate" disabled>
+            </div>
+
+            <button type="submit">Confirm</button>
+        </form>
+    </div>
+
+</body>
+</html>

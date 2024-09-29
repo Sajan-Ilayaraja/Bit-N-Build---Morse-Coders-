@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book your tickets</title>
+  <style>
+    /* Styles for the page to center elements and style the form */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    .ticket-info {
+      margin: 20px 0;
+    }
+    .ticket-info img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .form-group {
+      margin: 20px 0;
+      text-align: left; /* Align labels to the left */
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      background-color: #5e4fcf;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #4a40b8;
+    }
+    .price-info {
+      font-size: 18px;
+      color: #333;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="{{ url_for('after_login_page') }}">
+      <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="Logo" class="logo">
+    </a>  
+    <h1>Book your tickets!</h1>
+
+    <div class="ticket-info">
+      <img src="{{ url_for('static', filename='img/event10.png') }}" alt="Event Image">
+      <div class="ticket-details">
+        <h2 id="eventName">Event Name</h2>
+        <p id="eventDescription">Event Description</p>
+        <p><strong>Date:</strong> <span id="eventDate"></span></p>
+        <p><strong>Location:</strong> <span id="eventLocation"></span></p>
+      </div>
+    </div>
+
+    <form id="bookingForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" accept="image/*" required>
+      </div>
+    
+
+      <button type="button" id="proceedButton">Proceed to Pay 300</button>
+
+      <div class="price-info">Rupees 300 per seat.</div>
+    </form>
+  </div>
+
+  <script>
+document.getElementById('proceedButton').addEventListener('click', function() {
+  console.log('Proceed button clicked');  // Debugging line
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const email = document.getElementById('email').value;
+  const image = document.getElementById('image').files[0]; // Get the uploaded file
+
+  // Create FormData to send the file
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('phone', phone);
+  formData.append('email', email);
+  formData.append('image', image);
+
+  // Send data to the backend using fetch
+  fetch('/api/book_ticket', {
+    method: 'POST',
+    body: formData // Send FormData object
+  })
+  .then(response => {
+    if (response.ok) {
+      // If successful, redirect to the payment page
+      window.location.href = '/payment';
+    } else {
+      alert('Error booking ticket. Please try again.');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+});
+
+  </script>
+</body>
+</html>
